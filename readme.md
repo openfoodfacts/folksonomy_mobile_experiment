@@ -14,10 +14,15 @@ This app is made to **explore quick and (not so) dirty mobile usages of the [Fol
 This app is a prototype. To allow as much people as possible to reuse the code or to contribute, it is based on [Apache Cordova](https://cordova.apache.org/). Contributing to the app only requires HTML, CSS and javascript skills.
 
 # Installing the dev environement
-* Install Cordova
+* Install nodejs and npm
+* Install Cordova globally: `npm install -g cordova`
 * Install Android Studio (this is the most complicated stuf)
 * create a new directory and open it in a terminal
 * `git clone git@github.com:openfoodfacts/folksonomy_mobile_experiment.git`
+* `cd folksonomy_mobile_experiment`
+* `npm install`
+* `cordova platform add browser`
+* `cordova platform add android`
 * ... should now work. To verify installation is ok:
 
 ```
