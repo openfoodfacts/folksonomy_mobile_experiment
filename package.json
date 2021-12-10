@@ -1,0 +1,35 @@
+{
+  "name": "org.openfoodfacts.scanandtag",
+  "displayName": "Scan and Tag",
+  "version": "0.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Open Food Facts Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "cordova-android": "^9.1.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-browsersync-gen2": "^1.1.7",
+    "cordova-plugin-qr-barcode-scanner": "^8.0.3",
+    "cordova-plugin-whitelist": "^1.3.5"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-qr-barcode-scanner": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-browsersync-gen2": {}
+    },
+    "platforms": [
+      "browser",
+      "android"
+    ]
+  }
+}
