@@ -23,10 +23,11 @@ This app is a prototype. To allow as much people as possible to reuse the code o
 * `npm install`
 * `cordova platform add browser`
 * `cordova platform add android`
+* Create a `pass.js` based on `pass_sample.js` and fill it with Open Food Facts credentials (you shouldn't use you own personal account)
+* `cp ./www/js/pass_sample ./www/js/pass.js`
 * ... should now work. To verify installation is ok:
 
 ```
-cd ./folksonomy_mobile_experiment
 cordova run browser
 ```
 
@@ -36,3 +37,14 @@ If you want to generate an Android mobile app:
 ```
 cordova run android
 ```
+
+We are using the [Browsync-gen2](https://github.com/DimitrisRK/cordova-plugin-browsersync-gen2) Cordova plugin to allow live reload after each code modification. To use this feature, try:
+```
+cordova run browser --live-reload
+cordova run android --live-reload
+```
+
+# Credits
+* Data by [Open Food Facts](https://world.openfoodfacts.org) contributors, under [ODbL licence](https://opendatacommons.org/licenses/odbl/1-0/).
+* Photos by [Open Food Facts](https://world.openfoodfacts.org) contributors, under [Creative Commons 3.0 CC-BY-SA licence](https://creativecommons.org/licenses/by-sa/3.0/deed.en).
+* [Icon](https://iconarchive.com/show/blogger-icons-by-rafiqul-hassan/Tag-2-icon.html) by Rafiqul Hassan, published at IconArchive.
