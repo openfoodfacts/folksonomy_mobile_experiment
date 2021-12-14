@@ -1,6 +1,10 @@
 /*
- * 
+ * Requirements:
+ * - jQuery (map function)
+ * - awesomplete (autocompletion)
  */
+
+
 
 Capture_barcode_Opts = { //DFLT
     preferFrontCamera : false, // iOS and Android
@@ -16,9 +20,12 @@ Capture_barcode_Opts = { //DFLT
     disableSuccessBeep: true // iOS and Android
 }
 
-const property = "packaging:character";
+const defaultProperty = "packaging:character";
+property = localStorage.getItem("property") ? localStorage.getItem("property") : defaultProperty;
+
 //const feAPI = "http://fr.openfoodfacts.localhost:8000"; // For dev environment
 const feAPI = "https://api.folksonomy.openfoodfacts.org"; // For production environment
+const offURL = "https://world.openfoodfacts.org";
 var bearer;
 const authrenewal = 1 * 5 * 60 * 60 * 1000;
 
@@ -31,10 +38,12 @@ function _init() {
   console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
   btnSts = document.getElementById("status");
   btnScan = document.getElementById("scan");
+  btnPrefs = document.getElementById("prefButton");
 
   btnSts.innerHTML = "Ready!";
   btnScan.onclick = function (ev) {
     btnSts.innerHTML = "Reading...";
+    property = localStorage.getItem("property") ? localStorage.getItem("property") : defaultProperty;
     capture_barcode_p()
       .then( barcode => { 
         const id = barcode.text.trim();
@@ -60,6 +69,45 @@ function _init() {
       })
       .catch(err => console.log(err));
   }
+
+  btnPrefs.onclick = function () {
+    console.log("Prefs button cliked...");
+    const newPropertyDiv = document.getElementById("newPropertyDiv");
+    if (window.getComputedStyle(newPropertyDiv).display === 'block') {
+      newPropertyDiv.style.display = "none";
+    }
+    else {
+      newPropertyDiv.style.display = "block";
+      fetch(feAPI + "/keys").
+        then(function(u){ return u.json(); }).
+        then(function(json){
+
+        /* [    { "k": "knockoff_brand", "count": 25, "values": 7 },
+                { "k": "packaging:has_character", "count": 18, "values": 1 }  ] */
+        // map function needs jquery
+        const list = $.map(json, function (value) {
+                    return {
+                        label: value.k + " (" + value.count + ")",
+                        value: value.k
+                    };
+                });
+        console.log(list);
+        var input = document.getElementById("newProperty");
+        // jquery UI autocomplete: https://jqueryui.com/autocomplete/
+        //$("#fe_form_new_property").autocomplete({
+        new Awesomplete(input, {
+            list: list,
+          });
+        });
+    }
+  }
+
+  document.getElementById("newPropertyForm").addEventListener('submit', function(e){
+    e.preventDefault();
+    console.log('Save property: ', this);
+    localStorage.setItem('property', newPropertyDiv.querySelector("input[name='property']").value);
+  }, false);
+
 }
 
 
@@ -92,13 +140,15 @@ function displayProperty(data,id){
   propertyValue = document.getElementById('propertyValue');
   if(data) {
     document.getElementById('noInfo').style.visibility = "hidden";
-    propertyValue.textContent = `${data.k}: ${data.v}`;
+    propertyValue.innerHTML = `<a href="${offURL}/property/${data.k}">${data.k}</a>: ${data.v}`;
     
     console.log('displayProperty(data,id) - data.product:', data.product);
   }
   else {
     btnSts.textContent = "";
-    propertyValue.textContent = "The property " + property + " was not known for product " + id + ". ";
+    propertyValue.innerHTML = `The property <strong><a href="${offURL}/property/${property}">${property}</a></strong> 
+                                was not known for product <span class='id'>${id}</span>. `;
+    propertyValue.innerHTML += "Feel free to add it!";
     console.log(`displayProperty(data,id) - launch displayPropertyForm(${property})`);
     displayPropertyForm(property,id);
   }
@@ -108,7 +158,6 @@ function displayProperty(data,id){
 
 function displayPropertyForm(property,id) {
   console.log('displayPropertyForm(property) - property:', property);
-  propertyValue.textContent += "Feel free to add it!";
   let form = document.getElementById("propertyForm");
   form.innerHTML = `
     <form id='property' action='' method='GET'>

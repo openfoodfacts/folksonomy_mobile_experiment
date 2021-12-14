@@ -31,11 +31,12 @@
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
         <!-- meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;" -->
-        <meta http-equiv="Content-Security-Policy" content="default-src *; script-src *; style-src 'self' 'unsafe-inline'; media-src *; img-src *;">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; script-src *; style-src 'self' 'unsafe-inline' *; media-src *; img-src *;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.base.css" integrity="sha512-JreNkqx4723Zhvmy8TtRDue2ZbPrPIzJSjK84o3KUsjA/eKuOW3bhea06M8urMlsFS3Yj+9m3OudzqJDrk3yOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="css/index.css">
         <link rel="shortcut icon" href="favicon.png">
         <title>Scan and Tag</title>
@@ -77,16 +78,27 @@
 
             </div>
 
+            <div id="prefButton">⚙</div>
+
+            <div id="newPropertyDiv" style="display:none">
+                <form id="newPropertyForm" action="" method="GET">
+                    <input id="newProperty" type="text" name="property" placeholder="New property" value="" />
+                    <button type="submit">Enter</button>
+                </form>
+            </div>
+
             <!-- https://blog.webnersolutions.com/cordovaphonegap-how-to-fix-footer-at-bottom-when-virtual-keyboard-is-opened/ -->
             <!-- footer>
                 <a class="credits" href="https://openfoodfacts.org/">openfoodfacts.org</a>                
             </footer -->
             <div data-role="footer" data-position="fixed" class='footer' data-theme='b' data-tap-toggle="false">
-                <p id="app_version">Scan and Tag v. 0.0.3</p>
+                <p id="app_version">Scan and Tag v. 0.0.4</p>
                 <p>Source: <a class="credits" href="https://openfoodfacts.org/">openfoodfacts.org</a></p>
             </div>
 
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js" integrity="sha512-HcBl0GSJvt4Qecm4srHapirUx0HJDi2zYXm6KUKNNUGdTIN9cBwakVZHWmRVj4MKgy1AChqhWGYcMDbRKgO0zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="cordova.js"></script>
         <script src="js/pass.js"></script>
         <script src="js/index.js"></script>
