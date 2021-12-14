@@ -44,7 +44,11 @@ cordova run browser --live-reload
 cordova run android --live-reload
 ```
 
+# Screenshot
+![image](https://user-images.githubusercontent.com/562352/146056676-1a1e3fdb-29f4-4501-b781-db76b182a4b9.png)
+
+
 # Credits
 * Data by [Open Food Facts](https://world.openfoodfacts.org) contributors, under [ODbL licence](https://opendatacommons.org/licenses/odbl/1-0/).
 * Photos by [Open Food Facts](https://world.openfoodfacts.org) contributors, under [Creative Commons 3.0 CC-BY-SA licence](https://creativecommons.org/licenses/by-sa/3.0/deed.en).
-* [Icon](https://iconarchive.com/show/blogger-icons-by-rafiqul-hassan/Tag-2-icon.html) by Rafiqul Hassan, published at IconArchive.
+* [Icon](https://iconarchive.com/show/blogger-icons-by-rafiqul-hassan/Tag-2-icon.html) by Rafiqul Hassan, published at IconArchive
