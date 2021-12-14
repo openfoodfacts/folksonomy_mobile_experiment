@@ -106,6 +106,7 @@ function _init() {
     e.preventDefault();
     console.log('Save property: ', this);
     localStorage.setItem('property', newPropertyDiv.querySelector("input[name='property']").value);
+    newPropertyDiv.style.display = "none"; // remove the form
   }, false);
 
 }
