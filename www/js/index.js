@@ -1,6 +1,5 @@
 /*
  * Requirements:
- * - jQuery (map function)
  * - awesomplete (autocompletion)
  */
 
@@ -84,8 +83,7 @@ function _init() {
 
         /* [    { "k": "knockoff_brand", "count": 25, "values": 7 },
                 { "k": "packaging:has_character", "count": 18, "values": 1 }  ] */
-        // map function needs jquery
-        const list = $.map(json, function (value) {
+        const list = json.map(function (value) {
                     return {
                         label: value.k + " (" + value.count + ")",
                         value: value.k
