@@ -13,7 +13,7 @@
   "author": "Open Food Facts Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "^9.1.0",
+    "cordova-android": "^14.0.1",
     "cordova-browser": "^7.0.0",
     "cordova-plugin-browsersync-gen2": "^1.1.7",
     "cordova-plugin-qr-barcode-scanner": "^8.0.3",
