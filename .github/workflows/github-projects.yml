@@ -7,6 +7,8 @@ on:
       - labelled
       - transferred
 
+permissions: {}
+
 jobs:
   add-to-project:
     name: Add issue to Folksonomy GitHub Project
